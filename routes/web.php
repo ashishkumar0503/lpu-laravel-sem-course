@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\user; 
 use App\Http\Controllers\formController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,16 +130,32 @@ Route::get('/', function() {
 // Route::post('/process-form', [formController::class, 'processForm'])->name('process-form');
 
 // Middleware
-Route::get('/users', function() {
-    return view('users.user');
-});
-Route::get('/checkage', function() {
-    return view('users.checkAge');
-});
-Route::get('/noaccess', function() {
-    return view('users.noAccess');
-});
+// Route::get('/users', function() {
+//     return view('users.user');
+// });
+// Route::get('/checkage', function() {
+//     return view('users.checkAge');
+// });
+// Route::get('/noaccess', function() {
+//     return view('users.noAccess');
+// });
 
+// Session
+Route::post("users",[userController::class,'getData']);
+Route::view('profile','profile');
+Route::get('/logout', function () {
+    if(session()->has('user')){
+        session()->pull('user',null);
+    }
+    return redirect('login');
+});
+Route::get('/login', function () {
+    if(session()->has('user'))
+    {
+        return redirect('profile');
+    }
+    return view ('users');
+});
 
 
 // Fallback method
