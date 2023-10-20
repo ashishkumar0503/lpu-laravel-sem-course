@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Profile Page</h1>
-    <h5>Hello </h5>
-    <a href="{{ url('logout') }}">Logout</a>
+    <h5>Hello {{session('user')}}</h5>
+    <a href="/logout">Logout</a>
 </body>
 </html>

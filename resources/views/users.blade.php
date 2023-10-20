@@ -61,12 +61,13 @@
 </head>
 <body>
 
-    <form action="{{ url('users') }}" method="post">
+    <form action="users" method="post">
         @csrf
         <h1>User Login</h1>
+        
 
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="user" name="user" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
