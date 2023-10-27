@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user; 
 use App\Http\Controllers\formController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\productController;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,6 +157,8 @@ Route::get('/login', function () {
     }
     return view ('users');
 });
+
+Route::get('productlist', [productController::class, 'showProducts']);
 
 
 // Fallback method
